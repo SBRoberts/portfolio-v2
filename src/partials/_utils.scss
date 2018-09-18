@@ -1,0 +1,50 @@
+$cyan: #0da8e3;
+$magenta: #ed0e92;
+$yellow: #f7e60e;
+$light: #fff;
+$black: #2F2F2F;
+$dark: #0A0028;
+:root {
+    --highlightColor: $dark;
+
+}
+
+$boxStroke:2px;
+$gutter:13vmax;
+$gap: 1.5rem;
+
+$border: 1px solid #bbb;
+$backgroundLines: repeating-linear-gradient(45deg, transparent, transparent 30px, $dark 30px, $dark 33px);
+
+$headingFont: 'Roboto Slab', serif;
+$bodyFont: 'Roboto', sans-serif;
+
+// Grid Layout
+$columnHeader: 40vmax auto;
+
+// Portfolio
+
+
+@mixin gridColumn ($columnConfig) {
+    display: grid;
+    grid-template-columns: $columnConfig;
+    grid-gap: $gap;
+    // grid-template-areas: "left right";
+
+}
+
+@mixin gridRow () {
+    grid-template-rows: 2fr 30vmin 2fr;
+    grid-template-areas:"topLeft topCenter "
+                        "middleLeft middleCenter "
+                        "bottomLeft bottomCenter ";
+    // z-index: -1;
+}
+
+@mixin position($position, $top, $right, $bottom, $left) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}

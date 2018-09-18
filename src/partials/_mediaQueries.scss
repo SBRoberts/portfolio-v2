@@ -1,0 +1,64 @@
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+  .piece .pieceHeader {
+    .pieceImage{
+      background-position: right top;
+      background-size: 40%;
+      top: 0;
+    }
+    &:hover{
+      .pieceImage{
+        background-size: 45%;
+      }
+    }
+  }
+}
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+  .piece .pieceHeader {
+    .pieceImage{
+    }
+    &:hover{
+      .pieceImage{
+        // background-position: right top;
+        // background-size: 35%;
+      }
+    }
+  }
+}
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .piece {
+    .pieceHeader .pieceImage{
+      display: none;
+    }
+  }
+  .row{
+    .third, .half, .twoThirds, .threeQuarter{
+      width: 100%;
+    }
+  }
+  #portfolioPage {
+    .pieces{
+      .tools {
+        margin: 1rem 0;
+        ul{
+          display: flex;
+          justify-content: space-between;
+          padding: 0;
+        }
+      }
+      .highlightButton{
+        top: 0;
+      }
+    }
+  }
+  input:checked{
+    .sitePreview{
+      display: none;
+    }
+  }
+  #portfolioPage .pieces input:checked + label .sitePreview{
+    display: none;
+  }
+}

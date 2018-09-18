@@ -1,0 +1,37 @@
+// TOP GRID HOVER
+.topLeft{
+	grid-area: topLeft;
+}
+.topCenter{
+	grid-area: topCenter;
+}
+
+.topRight{
+	grid-area: topRight;
+}
+
+// BOTTOM GRID HOVER
+.bottomLeft{
+	grid-area: bottomLeft;
+}
+
+.bottomCenter{
+	grid-area: bottomCenter;
+}
+
+.bottomRight{
+	grid-area: bottomRight;
+}
+
+// MIDDLE GRID HOVER
+.middleLeft {
+	grid-area: middleLeft;
+}
+.middleCenter{
+    grid-area: middleCenter;
+    // align-items: center;
+}
+
+.middleRight{
+	grid-area: middleRight;
+}
