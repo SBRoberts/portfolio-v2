@@ -37,13 +37,13 @@ class CMYK extends Component {
             // </div>
             :
             <div className="displayContainer displayContainer__text">
-              <svg className="cyanObj" style={{ top: 0, left: 0, }}>
+              <svg className="cyanObj" id="cyanObj">
                 {this.props.img}
               </svg>
-              <svg className="magentaObj" style={{ top: 0, left: 0, }}>
+              <svg className="magentaObj" id="magentaObj">
                 {this.props.img}
               </svg>
-              <svg className="yellowObj" style={{ top: 0, left: 0, }}>
+              <svg className="yellowObj" id="obj">
                 {this.props.img}
               </svg>
             </div>

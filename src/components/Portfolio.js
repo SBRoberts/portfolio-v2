@@ -2,25 +2,20 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 // import { Link } from 'react-router-dom';
 // import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {  FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import projects from '../projects.js';
 
 // COMPONENTS
-// import Nav from './Nav';
-// import CMYK from './CMYK';
 import SitePreview from './SitePreview'
 
 class Portfolio extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // projects: this.props.projects,
     }
-  }
-  componentDidMount(){
-    // library.add(faArrowRight)
   }
   render() {
     return (
@@ -30,20 +25,15 @@ class Portfolio extends Component {
             {
               projects.map((piece,i) => {
                 const pieceName = _.camelCase(piece.name)
-                const backgroundImage = {
-                  backgroundImage: `url(${piece.image})`,
-                  backgroundRepeat: 'no-repeat',
-                  // backgroundSize: 'contain',
-
-                }
                 if (piece.display === true) {
-                  
                   return (
                     <li key={i}>
                       <input type="checkbox" name={pieceName} id={`${pieceName}Label`} />
                         <label className="piece" htmlFor={`${pieceName}Label`} id={pieceName} onMouseOver={this.props.getPiece}>
                         <div className="row pieceHeader">
-                          <div className="row pieceImage" style={backgroundImage}></div>
+                          <div className="row pieceImage" >
+                            <img src={piece.image} alt=""/>
+                          </div>
                             <div>
                               <div className="row">
                                 <h3 className="order">{`0${piece.order}`}</h3>
@@ -64,7 +54,6 @@ class Portfolio extends Component {
                               <ul>
                                 {
                                   piece.tools.map((tool, i) => {
-                                    // console.log(Object.entries(tool)[0][1])
                                     return <li key={i}>{tool}</li>
                                   })
                                 }
@@ -75,6 +64,14 @@ class Portfolio extends Component {
                                 <p>View Project</p>
                                 <FontAwesomeIcon icon={faArrowRight} />
                               </a>
+                              {
+                                piece.github ?
+                                <a href={piece.github} target="_blank" className="highlightButton">
+                                  <p>View Repo</p>
+                                  <FontAwesomeIcon icon={faGithub} />
+                                </a>
+                                : null
+                              }
                             </div>
                           </div>
                           <div className="sitePreview">
@@ -85,6 +82,7 @@ class Portfolio extends Component {
                     </li>
                   )
                 }
+                return null
               })
             }
           </ul>

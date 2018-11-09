@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
-import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faMedium } from '@fortawesome/free-brands-svg-icons';
+import { faGithubSquare, faLinkedin, faMedium } from '@fortawesome/free-brands-svg-icons';
 
 import Nav from './Nav';
 

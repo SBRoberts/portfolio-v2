@@ -4,22 +4,23 @@ import React, { Component } from 'react';
 import Nav from './Nav';
 import Portfolio from './Portfolio';
 import Footer from './Footer';
+import CMYK from './CMYK';
+import { text } from '@fortawesome/fontawesome-svg-core';
 
 
 class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clientY: this.props.clientY,
-      clientX: this.props.clientX,
       projects: this.props.projects,
+      text: <g><text className="primaryHeading" style={{ transform: 'translateY(6rem)', fill: '#fff' }}>Web developer &</text> <text className="primaryHeading" style={{ transform: 'translateY(9rem)', fill: '#fff'  }}>code whisperer</text></g>,
     }
   }
 
   render() {
     return (
       <div>
-        <header onMouseMove={this.props.move}>
+        <header onMouseMove={this.props.move} className="landingHeader">
           <div className="outterWrapper vh">
             <div className="mainHeader">
               <div className="row row__padding">
@@ -28,8 +29,8 @@ class Landing extends Component {
                 </div>
               </div>
               <div className="row row__padding">
-                <div className="twoThirds">
-                  <h2 className="primaryHeading">Web developer & code whisperer</h2>
+                <div className="row">
+                  <CMYK img={this.state.text}/>
                 </div>
               </div>
               <div className="row row__padding row__padding--sides">

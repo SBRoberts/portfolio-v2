@@ -2,8 +2,7 @@
 @media (max-width: 940px) {
   .piece .pieceHeader {
     .pieceImage{
-      background-position: right top;
-      background-size: 40%;
+      align-items: flex-start;
       top: 0;
     }
     &:hover{
@@ -15,16 +14,6 @@
 }
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
-  .piece .pieceHeader {
-    .pieceImage{
-    }
-    &:hover{
-      .pieceImage{
-        // background-position: right top;
-        // background-size: 35%;
-      }
-    }
-  }
 }
 /* Landscape phones and down */
 @media (max-width: 480px) {
@@ -60,5 +49,46 @@
   }
   #portfolioPage .pieces input:checked + label .sitePreview{
     display: none;
+  }
+
+  #aboutContact{
+    .aboutMe .row{
+      flex-wrap: wrap;
+      .half:first-of-type{
+        order:2;
+      }
+      .half:last-of-type{
+        order:1;
+      }
+      .portrait{
+        display: flex;
+        align-self: stretch;
+        height: 100%;
+        img{
+          bottom: 0;
+          margin-top: $gap;
+        }
+      }
+    }
+  }
+  .movableObjectContainer {
+    svg{
+      height: 6vmax;
+      left: 20px;
+      text{
+        font-size: 5vmax;
+      }
+    }
+  }
+  footer{
+    flex-wrap: wrap;
+    text-align: center;
+    .third{
+      justify-content: center;
+    }
+    input{
+      width: 100%;
+      text-align: center;
+    }
   }
 }

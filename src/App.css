@@ -183,27 +183,29 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 .outterWrapper {
   position: relative;
   padding: 1.5rem;
-  display: flex; }
+  display: flex;
+  width: 100%; }
   .outterWrapper.vh {
     height: 100vh; }
+
+.landingHeader {
+  background: #fff; }
+  .landingHeader h1 {
+    font-family: "Roboto Slab", serif;
+    font-weight: 400; }
 
 header {
   display: flex;
   width: 100%;
   max-width: 100%; }
-  header .landingHeader {
-    display: grid;
-    grid-template-columns: 40vmax auto;
-    grid-gap: 1.5rem;
-    grid-template-rows: 2fr 30vmin 2fr;
-    grid-template-areas: "topLeft topCenter " "middleLeft middleCenter " "bottomLeft bottomCenter ";
-    margin-left: 1.5rem; }
   header .mainHeader {
     color: #fff;
     background: #0A0028;
     width: 100%;
     display: flex;
     flex-wrap: wrap; }
+    header .mainHeader .movableObjectContainer {
+      top: -3rem; }
 
 footer {
   background: #0A0028;
@@ -254,7 +256,8 @@ textarea {
 .primaryHeading {
   font-family: "Roboto Slab", serif;
   font-size: 3rem;
-  font-weight: 400; }
+  font-weight: 400;
+  z-index: -1; }
 
 p {
   font-weight: 400;
@@ -300,9 +303,12 @@ ul {
   position: relative;
   display: flex;
   align-self: center;
-  height: 100%;
+  height: 3rem;
   width: 100%;
   text-transform: uppercase; }
+  .movableObjectContainer .displayContainer {
+    height: 100%;
+    width: 100%; }
   .movableObjectContainer__img {
     height: 100%;
     margin-top: 0; }
@@ -316,22 +322,25 @@ ul {
     left: 0; }
   .movableObjectContainer svg {
     position: absolute;
-    left: 0;
     transition: top .15s ease-out, left .15s ease-out;
-    width: 100%;
-    height: 100%; }
+    width: 100%; }
     .movableObjectContainer svg path, .movableObjectContainer svg text {
-      mix-blend-mode: multiply; }
+      mix-blend-mode: screen; }
+      .movableObjectContainer svg path:last-of-type, .movableObjectContainer svg text:last-of-type {
+        top: 3rem; }
     .movableObjectContainer svg text {
       position: absolute;
       width: 100%;
-      transform: translateY(25%);
-      font-family: "Roboto Slab", serif;
-      font-weight: 700;
-      font-size: 2rem;
-      display: flex; }
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      font-size: 3rem;
+      text-transform: initial;
+      display: flex;
+      transition: fill .3s; }
     .movableObjectContainer svg .logo text {
       font-size: 3.5rem; }
+  .movableObjectContainer .cyanObj, .movableObjectContainer .magentaObj, .movableObjectContainer .yellowObj {
+    overflow: visible; }
   .movableObjectContainer .cyanObj path, .movableObjectContainer .cyanObj text {
     fill: #0da8e3; }
   .movableObjectContainer .magentaObj path, .movableObjectContainer .magentaObj text {
@@ -382,24 +391,26 @@ ul {
     position: relative;
     width: 100%;
     z-index: 100;
-    cursor: pointer; }
+    cursor: pointer;
+    overflow: visible; }
     .piece .pieceHeader .pieceImage {
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-size: 40%;
-      background-position: right center;
+      width: auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
       height: 100%;
       opacity: 0;
       z-index: -1;
       transform: scale(1);
       transform-origin: center right;
-      transition: opacity .5s, transform 10s linear; }
-    .piece .pieceHeader:hover .pieceImage {
-      transform: scale(1.1);
-      opacity: 1; }
+      transition: opacity .3s, transform 10s linear; }
+      .piece .pieceHeader .pieceImage img {
+        border: solid #0A0028;
+        border-width: .5rem .3rem .5rem;
+        border-radius: 3% 3% 3% 3%;
+        outline: none;
+        width: 40%; }
   .piece .order {
     font-size: 5rem;
     font-family: "Roboto Slab", serif;
@@ -428,13 +439,15 @@ ul {
     padding: 1rem;
     height: auto !important; }
     .piece.previewType svg, .piece.previewType path {
-      z-index: -1;
       fill: #0A0028;
       transition: fill .15s; }
     .piece.previewType:hover svg, .piece.previewType:hover path {
       fill: var(--highlightColor); }
   .piece:hover .order {
     color: var(--highlightColor); }
+  .piece:hover .pieceImage {
+    transform: scale(1.1);
+    opacity: 1; }
 
 #portfolioPage {
   width: 100%; }
@@ -470,7 +483,7 @@ ul {
       z-index: 999; }
       #portfolioPage .pieces input:checked + label .pieceInfo {
         opacity: 1;
-        height: 100%; }
+        height: auto; }
       #portfolioPage .pieces input:checked + label .pieceHeader svg[class*="fa"] {
         margin-left: 5rem;
         opacity: 1; }
@@ -534,13 +547,13 @@ ul {
     border-width: 2rem .75rem 1.5rem;
     border-radius: 2% 2% 2% 2%; }
   .siteWindow.tablet {
-    height: 90vh;
+    height: 85vh;
     width: calc(768px + 1.9rem);
     border-width: 2rem 1rem 2rem;
     border-radius: 1rem 1rem 1rem 1rem; }
   .siteWindow.mobile {
-    height: 90vh;
-    width: calc(320px + 1.4rem);
+    height: 87vh;
+    width: calc(320px + 1.5rem);
     border-width: 1rem .75rem 2.5rem;
     border-radius: .5rem; }
   .siteWindow .overlay {
@@ -572,18 +585,17 @@ ul {
 
 .portrait {
   position: relative;
+  height: 100%;
   display: flex;
-  align-self: stretch; }
-  .portrait:before {
-    content: '';
-    position: absolute;
-    top: 0vmin;
-    right: 10vmin;
-    bottom: -30vmin;
-    left: 10vmin;
-    background: url("./assets/spencer_roberts_monochrome.jpg") center no-repeat;
-    background-size: 125%;
-    z-index: 100; }
+  align-self: center;
+  z-index: 100;
+  padding: 0 1.5rem; }
+  .portrait img {
+    position: relative;
+    width: 100%;
+    align-self: center;
+    box-shadow: 0 -10px 50px -5px #ccc;
+    bottom: -6rem; }
 
 #contact {
   background: #0A0028;
@@ -661,6 +673,7 @@ ul {
   position: relative;
   background: transparent;
   padding: .5rem;
+  margin-right: .5rem;
   top: -5px;
   left: 0;
   border: 2px solid #0A0028;
@@ -697,8 +710,7 @@ ul {
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
   .piece .pieceHeader .pieceImage {
-    background-position: right top;
-    background-size: 40%;
+    align-items: flex-start;
     top: 0; }
   .piece .pieceHeader:hover .pieceImage {
     background-size: 45%; } }
@@ -721,4 +733,30 @@ ul {
   input:checked .sitePreview {
     display: none; }
   #portfolioPage .pieces input:checked + label .sitePreview {
-    display: none; } }
+    display: none; }
+  #aboutContact .aboutMe .row {
+    flex-wrap: wrap; }
+    #aboutContact .aboutMe .row .half:first-of-type {
+      order: 2; }
+    #aboutContact .aboutMe .row .half:last-of-type {
+      order: 1; }
+    #aboutContact .aboutMe .row .portrait {
+      display: flex;
+      align-self: stretch;
+      height: 100%; }
+      #aboutContact .aboutMe .row .portrait img {
+        bottom: 0;
+        margin-top: 1.5rem; }
+  .movableObjectContainer svg {
+    height: 6vmax;
+    left: 20px; }
+    .movableObjectContainer svg text {
+      font-size: 5vmax; }
+  footer {
+    flex-wrap: wrap;
+    text-align: center; }
+    footer .third {
+      justify-content: center; }
+    footer input {
+      width: 100%;
+      text-align: center; } }

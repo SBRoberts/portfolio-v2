@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer';
 
+import headshot from '../assets/spencer_roberts_monochrome.jpg'
+
 class AboutContact extends Component{
   render(){
     return(
@@ -33,6 +35,7 @@ class AboutContact extends Component{
                   </div>
                 </div>
                 <div className="half portrait">
+                  <img src={headshot} alt="Spencer Roberts Headshot. It's monochromatic"/>
                   {/* PIC OF ME HERE */}
                 </div>
               </div>

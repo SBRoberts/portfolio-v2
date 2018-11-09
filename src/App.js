@@ -38,15 +38,20 @@ class App extends Component {
     const clientY = e.clientY;
     const clientX = e.clientX;
 
-    this.setState({
-      clientX,
-      clientY,
-    })
     const movableObjectContainer = document.getElementsByClassName('movableObjectContainer')
-    // console.log(Object.entries(movableObjectContainer));
 
       Object.entries(movableObjectContainer).forEach((container) => {
       const moveObjects = Object.entries(container[1].getElementsByTagName('svg'))
+
+      // Firefox 1.0+
+      // firefox blend modes behave differently than chrome or safari, 
+      const isFirefox = typeof InstallTrigger !== 'undefined';
+      if(isFirefox){
+        moveObjects.forEach((obj) => {
+          obj[1].style["mix-blend-mode"] = "screen"
+        })
+      }
+
       moveObjects.map((obj) => {
         const classList = obj[1].className.baseVal.split(' ')
         const cyan = classList[classList.indexOf('cyanObj')]
@@ -55,30 +60,34 @@ class App extends Component {
         const parent = obj[1].parentElement.parentElement
         const parentType = obj[1].parentElement.classList[1]
         
-        // console.log(obj[1].getElementsByTagName('g'))
         if (parentType === 'displayContainer__text'){
-          // const parentWidth = obj[1].getElementsByTagName('text')[0].textLength.baseVal.value
           parent.style.width = `${obj[1].getElementsByTagName('text')[0].textLength.baseVal.value}px`
         }
         // conditionals for each layer, determining how much they move
+        obj[1].getElementsByTagName('text')[0].style.fill = '';
+        obj[1].getElementsByTagName('text')[1].style.fill = '';
         if (classList.includes(cyan)) {
-          obj[1].style.top = clientY / 24;
-          obj[1].style.left = clientX / 24;
+          obj[1].style.top = `${clientY / 40}px`;
+          obj[1].style.left = `${clientX / 40}px`;
+          
         }
         if (classList.includes(magenta)) {
-          obj[1].style.top = clientY / 20;
-          obj[1].style.left = clientX / 20;
+          obj[1].style.top = `${clientY / 35}px`;
+          obj[1].style.left = `${clientX / 35}px`;
         }
         if (classList.includes(yellow)) {
-          obj[1].style.top = clientY / 16;
-          obj[1].style.left = clientX / 16;
+          obj[1].style.top = `${clientY / 30}px`;
+          obj[1].style.left = `${clientX / 30}px`;
         }
         // reset items when their container if hovered over
-        if (e.target.className === 'movableObjectContainer') {
+        if (e.target.className === 'movableObjectContainer' || e.target.className.baseVal === 'primaryHeading') {
+          
           // console.log(e.target.className);
           // obj[1].style.transition = "all .4s cubic-bezier(0.3,0, .5, 2)";
           obj[1].style.top = 0;
           obj[1].style.left = 0;
+          obj[1].getElementsByTagName('text')[0].style.fill = '#fff';
+          obj[1].getElementsByTagName('text')[1].style.fill = '#fff';
         }
         return 0
       })
@@ -115,10 +124,6 @@ class App extends Component {
     })
   }
 
-  updatePath = (abc) => {
-    // console.log(abc);
-  }
-
   render() {
     return (
       <Router >
@@ -133,7 +138,7 @@ class App extends Component {
             className="switch-wrapper">
 
               <Route exact path="/" key="home" render={(props) =>
-                <Landing {...props} projects={this.state.projects} passChildState={this.passChildState} getPiece={this.getPiece}/>
+                <Landing {...props} projects={this.state.projects} passChildState={this.passChildState} getPiece={this.getPiece} move={this.move}/>
               } />
 
               <Route exact path="/aboutContact" key="aboutContact" render={(props) =>
