@@ -219,9 +219,10 @@ footer {
   footer .social {
     margin: 1rem .5rem 0;
     font-size: 1.5rem;
-    transition: font-size .2s; }
+    transform: scale(1);
+    transition: transform .2s; }
     footer .social:hover {
-      font-size: 1.75rem; }
+      transform: scale(1.15); }
   footer input {
     font-family: "Roboto", sans-serif;
     background: transparent;
@@ -589,13 +590,12 @@ ul {
   display: flex;
   align-self: center;
   z-index: 100;
-  padding: 0 1.5rem; }
+  padding: 0 calc(1.5rem * 2); }
   .portrait img {
     position: relative;
     width: 100%;
     align-self: center;
-    box-shadow: 0 -10px 50px -5px #ccc;
-    bottom: -6rem; }
+    box-shadow: 0 0 50px -5px #ddd; }
 
 #contact {
   background: #0A0028;
@@ -657,6 +657,11 @@ ul {
   text-transform: uppercase;
   margin-bottom: 2rem; }
 
+#aboutContact h3 {
+  color: #fff;
+  font-size: 2.5rem;
+  text-transform: uppercase; }
+
 #aboutContact p {
   font-size: 0.75rem;
   line-height: 1.5rem; }
@@ -669,15 +674,21 @@ ul {
     margin-left: 0;
     margin-right: .5rem; }
 
+#aboutContact .half.stretch {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  justify-content: center; }
+
 .highlightButton {
   position: relative;
   background: transparent;
   padding: .5rem;
   margin-right: .5rem;
-  top: -5px;
+  top: -3px;
   left: 0;
   border: 2px solid #0A0028;
-  transition: border .3s, top .3s;
+  transition: border .2s, top .2s;
   display: flex;
   color: #0A0028; }
   .highlightButton p {
@@ -716,6 +727,12 @@ ul {
     background-size: 45%; } }
 
 /* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+  #contact.row {
+    flex-wrap: wrap; }
+    #contact.row .half {
+      width: 100%; } }
+
 /* Landscape phones and down */
 @media (max-width: 480px) {
   .piece .pieceHeader .pieceImage {
@@ -734,17 +751,17 @@ ul {
     display: none; }
   #portfolioPage .pieces input:checked + label .sitePreview {
     display: none; }
-  #aboutContact .aboutMe .row {
+  #aboutContact .row {
     flex-wrap: wrap; }
-    #aboutContact .aboutMe .row .half:first-of-type {
+    #aboutContact .row .half:first-of-type {
       order: 2; }
-    #aboutContact .aboutMe .row .half:last-of-type {
+    #aboutContact .row .half:last-of-type {
       order: 1; }
-    #aboutContact .aboutMe .row .portrait {
+    #aboutContact .row .portrait {
       display: flex;
       align-self: stretch;
       height: 100%; }
-      #aboutContact .aboutMe .row .portrait img {
+      #aboutContact .row .portrait img {
         bottom: 0;
         margin-top: 1.5rem; }
   .movableObjectContainer svg {

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-// import { Link } from 'react-router-dom';
-// import { library } from '@fortawesome/fontawesome-svg-core'
-import {  FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+// Font Awesome Icons
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
@@ -10,6 +9,7 @@ import projects from '../projects.js';
 
 // COMPONENTS
 import SitePreview from './SitePreview'
+import ExternalLink from './ExternalLink'
 
 class Portfolio extends Component {
   constructor(props) {
@@ -60,16 +60,10 @@ class Portfolio extends Component {
                               </ul>
                             </div>
                             <div className="row">
-                              <a href={piece.path} target="_blank" className="highlightButton">
-                                <p>View Project</p>
-                                <FontAwesomeIcon icon={faArrowRight} />
-                              </a>
+                              <ExternalLink path={piece.path} icon={faArrowRight} className={"highlightButton"} text={"View Project"}/>
                               {
                                 piece.github ?
-                                <a href={piece.github} target="_blank" className="highlightButton">
-                                  <p>View Repo</p>
-                                  <FontAwesomeIcon icon={faGithub} />
-                                </a>
+                                <ExternalLink path={piece.github} icon={faGithub} className={"highlightButton"} text={"View Repo"}/>
                                 : null
                               }
                             </div>
@@ -78,7 +72,6 @@ class Portfolio extends Component {
                             <SitePreview path={piece.path} tools={piece.tools}/>
                           </div>
                         </label>
-                      {/* </Link> */}
                     </li>
                   )
                 }
@@ -87,7 +80,6 @@ class Portfolio extends Component {
             }
           </ul>
         </div>
-        {/* <h2>THIs Is POrOtFolio</h2> */}
       </section>
     )
   }

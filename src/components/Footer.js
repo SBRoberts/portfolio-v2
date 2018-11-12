@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+// Font Awesome Icons
 import { faGithubSquare, faLinkedin, faMedium } from '@fortawesome/free-brands-svg-icons';
 
+// Components
 import Nav from './Nav';
+import ExternalLink from './ExternalLink'
 
 class Footer extends Component{
-  copyOnClick = (elementId) => {
+  copyOnClick = (e) => {
     /* Get the text field */
-    var copyText = document.getElementById(elementId);
+    const copyText = e.currentTarget;
 
     /* Select the text field */
     copyText.select();
@@ -27,18 +30,12 @@ class Footer extends Component{
           </div>
           <div className="row third wrap">
             <div className="row justifyCenter">
-              <input type="text" id="emailAddress" onClick={() => this.copyOnClick('emailAddress')} defaultValue="spencerrca@gmail.com" readOnly/>
+              <input type="text" id="emailAddress" onClick={this.copyOnClick} defaultValue="spencerrca@gmail.com" readOnly/>
             </div>
             <div className="row justifyCenter">
-              <a href="https://github.com/SBRoberts" target="_blank" rel="noopener noreferrer" className="social">
-                <FontAwesomeIcon icon={faGithubSquare} />
-              </a>
-              <a href="https://www.linkedin.com/in/spencer-roberts-canada/" target="_blank" rel="noopener noreferrer" className="social">
-                <FontAwesomeIcon icon={faLinkedin} />
-              </a>
-              <a href="https://medium.com/@spencerrca" target="_blank" rel="noopener noreferrer" className="social">
-                <FontAwesomeIcon icon={faMedium} />
-              </a>
+              <ExternalLink path={"https://github.com/SBRoberts"} icon={faGithubSquare} className={"social"} />
+              <ExternalLink path={"https://www.linkedin.com/in/spencer-roberts-canada/"} icon={faLinkedin} className={"social"} />
+              <ExternalLink path={"https://medium.com/@spencerrca"} icon={faMedium} className={"social"} />
             </div>
           </div>
         </footer>

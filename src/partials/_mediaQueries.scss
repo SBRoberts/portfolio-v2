@@ -14,6 +14,12 @@
 }
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
+  #contact.row{
+    flex-wrap: wrap;
+    .half{
+      width: 100%;
+    }
+  }
 }
 /* Landscape phones and down */
 @media (max-width: 480px) {
@@ -52,7 +58,7 @@
   }
 
   #aboutContact{
-    .aboutMe .row{
+    .row{
       flex-wrap: wrap;
       .half:first-of-type{
         order:2;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer';
@@ -36,7 +35,6 @@ class AboutContact extends Component{
                 </div>
                 <div className="half portrait">
                   <img src={headshot} alt="Spencer Roberts Headshot. It's monochromatic"/>
-                  {/* PIC OF ME HERE */}
                 </div>
               </div>
             </section>
@@ -66,6 +64,9 @@ class AboutContact extends Component{
                 <h4>Submit</h4>
               </button>
             </form>
+            <div className="half stretch">
+              <h3>Hire Me <span role="img" aria-labelledby="Grimace Emoji">😬</span></h3>
+            </div>
           </section>
         </div>
         <Footer />

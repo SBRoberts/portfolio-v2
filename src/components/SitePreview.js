@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
-import { faTabletAlt } from '@fortawesome/free-solid-svg-icons';
-import { faDesktop } from '@fortawesome/free-solid-svg-icons';
+import { faMobileAlt, faTabletAlt, faDesktop  } from '@fortawesome/free-solid-svg-icons';
 
 
 class SitePreview extends Component {
@@ -25,9 +23,6 @@ class SitePreview extends Component {
     this.setState({
       previewType
     })
-    // console.log(this.state)
-    // console.log(previewType);
-    
   }
   render(){
     return(
@@ -54,12 +49,6 @@ class SitePreview extends Component {
 
         <div className="row justifyCenter">
           <div className={`siteWindow ${this.state.previewType}`}>
-            {/* <div className="overlay">
-              <div>
-                <h3> Click to view</h3>
-                <i className="fas fa-hand-pointer fa-1x"></i>
-              </div>
-            </div> */}
             <object type="text/html" data={this.props.path}>
             </object>
           </div>
